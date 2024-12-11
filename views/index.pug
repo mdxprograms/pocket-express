@@ -1,0 +1,13 @@
+extends layouts/base.pug
+
+block scripts 
+	script(type="module" src="/js/components/Counter.js")
+
+block content
+	h1= title
+	p Welcome to #{message}
+	div#counter
+
+	script 
+		import Counter from '/js/components/Counter.js'
+		Counter("#counter")

@@ -1,0 +1,35 @@
+{
+  "name": "pocket-express",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "serve": "node server.js",
+    "build:css": "tailwindcss -i ./public/css/tailwind.css -o ./public/css/styles.css",
+    "watch:css": "tailwindcss -i ./public/css/tailwind.css -o ./public/css/styles.css --watch",
+    "purge:css": "purgecss --css ./public/css/styles.css --content './views/**/*.pug' './public/js/**/*.js' -o ./public/css/styles.css",
+    "build:all": "npm run build:css && npm run purge:css",
+    "start": "concurrently \"npm run watch:css\" \"nodemon server.js\" \"browser-sync start --proxy 'http://localhost:3000' --files 'public/**/*.{js,css,html}' 'views/**/*.pug'\"",
+    "dev": "npm start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@wallerbuilt/mycelia": "^1.1.0",
+    "compression": "^1.7.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.4.1",
+    "express-session": "^1.18.1",
+    "pocketbase": "^0.22.1",
+    "winston": "^3.17.0"
+  },
+  "devDependencies": {
+    "browser-sync": "^3.0.3",
+    "concurrently": "^9.1.0",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.16"
+  }
+}

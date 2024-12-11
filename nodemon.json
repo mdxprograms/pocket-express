@@ -1,0 +1,12 @@
+{
+	"watch": [
+		"server.js",
+		"routes/",
+		"middleware/"
+	],
+	"ext": "js,json",
+	"ignore": [
+		"public/"
+	],
+	"exec": "node server.js"
+}
