@@ -24,10 +24,6 @@ coverage/
 .vscode/
 .idea/
 
-# npm or yarn lock file
-package-lock.json
-yarn.lock
-
 # Build tools and dependencies
 dist/
 build/
@@ -39,5 +35,3 @@ build/
 *.pid
 *.seed
 
-# BrowserSync cache
-.browsersync-cache/
