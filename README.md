@@ -28,22 +28,6 @@ Ensure `.env` is listed in your `.gitignore` file to avoid committing sensitive 
 
 ---
 
-### **Dependencies**
-
-Install the following packages using `npm`:
-
-```bash
-npm install express pocketbase dotenv express-session compression express-rate-limit pug winston
-```
-
-For development tools:
-
-```bash
-npm install -D nodemon concurrently tailwindcss postcss autoprefixer purgecss browser-sync
-```
-
----
-
 ### **Folder Structure**
 
 The project follows this structure:
@@ -67,35 +51,24 @@ The project follows this structure:
 
 ---
 
-### **Scripts**
-
-Add the following scripts to your `package.json`:
-
-```json
-"scripts": {
-  "serve": "node server.js",
-  "build:css": "tailwindcss -i ./public/css/tailwind.css -o ./public/css/styles.css",
-  "watch:css": "tailwindcss -i ./public/css/tailwind.css -o ./public/css/styles.css --watch",
-  "purge:css": "purgecss --css ./public/css/styles.css --content './views/**/*.pug' './public/js/**/*.js' -o ./public/css/styles.css",
-  "build:all": "npm run build:css && npm run purge:css",
-  "start": "concurrently \"npm run watch:css\" \"nodemon server.js\" \"browser-sync start --proxy 'http://localhost:3000' --files 'public/**/*.{js,css,html}' 'views/**/*.pug'\"",
-  "dev": "npm start"
-}
-```
-
 ### **Running the Project**
 
-1. Install dependencies:
+1. Ensure you have `nvm` (Node Version Manager) installed. Use `nvm` to manage and apply the correct Node.js version:
+   ```bash
+   nvm use
+   ```
+
+2. Install dependencies:
    ```bash
    npm install
    ```
 
-2. Start the development server with live reload:
+3. Start the development server with live reload:
    ```bash
    npm start
    ```
 
-3. For production, build the CSS and serve:
+4. For production, build the CSS and serve:
    ```bash
    npm run build:all
    npm run serve
