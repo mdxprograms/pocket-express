@@ -10,6 +10,7 @@ The application uses the following environment variables:
 - **`PORT`**: The port number where the server runs (default is `3000`).
 - **`SESSION_SECRET`**: A secret key for managing session encryption. Use a strong, random string.
 - **`POCKETHOST_BASE_URL`**: The base URL of your PocketBase instance.
+- **`NODE_ENV`**: node environment (local -> NODE_ENV=development)
 
 Create a `.env` file in the root of your project with the following structure:
 
