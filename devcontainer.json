@@ -1,0 +1,22 @@
+{
+  "name": "Node.js Dev Container",
+  "dockerFile": "Dockerfile",
+  "appPort": [3000, 3001, 4000],
+  "forwardPorts": [3000, 3001, 4000],
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash"
+      }
+    },
+    "extensions": [
+      "dbaeumer.vscode-eslint",
+      "esbenp.prettier-vscode"
+    ]
+  },
+  "postCreateCommand": "npm install",
+  "mounts": [
+    "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached"
+  ],
+  "workspaceFolder": "/workspace"
+}
