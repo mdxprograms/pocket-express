@@ -14,22 +14,29 @@ router.get("/login", (req, res) => {
 
 router.post("/login", async (req, res) => {
   const { email, password } = req.body;
+
   try {
-    const authData = await pb
-      .collection("users")
-      .authWithPassword(email, password);
+    const authData = await pb.collection("users").authWithPassword(email, password);
+
+    if (!authData || !authData.token || !authData.record) {
+      throw new Error("Authentication failed: Missing data in response.");
+    }
+
     req.session.token = authData.token;
-    req.session.user = authData.user;
-    logger.info(`User logged in: ${authData.user.email}`);
+    req.session.user = authData.record;
+
+    logger.info(`User logged in successfully: ${authData.record.email}`);
     res.redirect("/");
   } catch (error) {
-    logger.error("Error during login:", error);
+    logger.error("Error during login:", error.message || error);
+
     res.status(401).render("user/login", {
       title: "Login",
       message: "Invalid credentials. Please try again.",
     });
   }
 });
+
 
 // Logout route
 router.post("/logout", (req, res) => {
